@@ -9,6 +9,7 @@
 #'
 #' @param sql Structured Query Language.
 #' @param ... Format parameters.
+#' @export
 #' @examples
 #' sql.format(sql="select * from foo", reindent=1, keyword_case="upper")
 #' # -> [1] "SELECT *\nFROM foo"
