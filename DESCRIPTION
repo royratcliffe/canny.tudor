@@ -10,6 +10,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
+    dplyr,
+    forecast,
     gtools,
     httr
 RoxygenNote: 7.1.1

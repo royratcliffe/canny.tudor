@@ -25,3 +25,12 @@ p.q.frame <- function(v = vector()) {
   colnames(m) <- c("p", "q")
   as.data.frame(m)
 }
+
+#' @export
+permuted.Arimas <- function(x, v = 0:5, lambda = 0) {
+  p.q.frame(v) %>%
+    rowwise() %>%
+    mutate(arima = list(Arima(x, order = c(p, 0, q), lambda = lambda))) %>%
+    mutate(aic = arima$aic) %>%
+    arrange(aic)
+}
