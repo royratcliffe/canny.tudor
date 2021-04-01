@@ -12,7 +12,7 @@ on:
 
 jobs:
   test-coverage:
-    runs-on: macos-latest
+    runs-on: self-hosted
 
     steps:
       - uses: actions/checkout@v2
