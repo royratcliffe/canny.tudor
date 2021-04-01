@@ -3,7 +3,7 @@ name: test-coverage
 on: [push]
 
 jobs:
-  test-coverage:
+  build:
     runs-on: macos-latest
 
     steps:
