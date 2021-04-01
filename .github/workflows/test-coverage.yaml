@@ -5,6 +5,10 @@ on: [push]
 jobs:
   build:
     runs-on: macos-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        r-version: [3.5, 3.6, 4.0]
 
     steps:
       - uses: actions/checkout@v2
