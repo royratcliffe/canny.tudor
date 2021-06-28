@@ -10,9 +10,12 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
+    dplyr,
     feather,
+    gitlabr,
     gtools,
     httr,
+    magrittr,
     withr
 RoxygenNote: 7.1.1
 Suggests: 
