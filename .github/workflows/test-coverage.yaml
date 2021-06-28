@@ -1,0 +1,27 @@
+name: test-coverage
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        r-version: [3.5, 3.6, 4.0]
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-pandoc@master
+
+      - name: Install dependencies
+        run: |
+          install.packages(c("remotes"))
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("covr")
+        shell: Rscript {0}
+
+      - name: Test coverage
+        run: covr::codecov()
+        shell: Rscript {0}
