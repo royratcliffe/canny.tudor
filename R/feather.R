@@ -8,7 +8,7 @@
 #' @return Data frame as \code{tibble::\link[tibble]{tibble}}
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' # Suppose that you have a HTTP response with a binary response body encoding
 #' # a feathered data frame.
 #' readFeather(httr::content(res))
