@@ -13,6 +13,7 @@ Imports:
     feather,
     gtools,
     httr,
+    purrr,
     withr
 RoxygenNote: 7.1.1
 Suggests: 
