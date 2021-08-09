@@ -32,7 +32,7 @@ List of \code{\link[R.oo]{Package}} dependencies.
 Finds \code{\link[R.oo]{Package}} objects for all dependencies of \code{pkgs}.
 }
 \examples{
-\donttest{
+\dontrun{
 library(R.oo)
 methods(class = "Package")
 #  [1] as.character        getAuthor           getBundle           getBundlePackages

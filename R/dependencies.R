@@ -6,7 +6,7 @@
 #' @return List of \code{\link[R.oo]{Package}} dependencies.
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' library(R.oo)
 #' methods(class = "Package")
 #' #  [1] as.character        getAuthor           getBundle           getBundlePackages
