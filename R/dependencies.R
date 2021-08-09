@@ -18,5 +18,7 @@
 #' # [29] isOlderThan         ll                  load                showChangeLog
 #' # [33] showContents        showDescriptionFile showHistory         showHowToCite
 #' # [37] showNews            startupMessage      unload
+#'
+#' dependentPackages("dplyr") |> tibble::enframe(value = "package")
 dependentPackages <- function(...)
   Map(R.oo::Package, gtools::getDependencies(...))
