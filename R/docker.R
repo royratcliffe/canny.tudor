@@ -5,7 +5,9 @@
 #' only the calling user's configuration file.
 #' @export
 .docker_config <- function()
-  jsonlite::fromJSON(file(fs::path_home(".docker", "config.json")))
+  jsonlite::fromJSON(file(.docker_config.json))
+
+.docker_config.json <- fs::path_home(".docker", "config.json")
 
 #' System-wide Docker information
 #'
