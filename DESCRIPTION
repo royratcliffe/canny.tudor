@@ -13,6 +13,7 @@ Imports:
     feather,
     gtools,
     httr,
+    jsonlite,
     purrr,
     rlang,
     withr
