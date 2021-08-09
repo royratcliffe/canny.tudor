@@ -6,6 +6,7 @@
 #' @return List of \code{\link[R.oo]{Package}} dependencies.
 #' @export
 #' @examples
+#' \donttest{
 #' library(R.oo)
 #' methods(class = "Package")
 #' #  [1] as.character        getAuthor           getBundle           getBundlePackages
@@ -20,5 +21,6 @@
 #' # [37] showNews            startupMessage      unload
 #'
 #' dependentPackages("dplyr") |> tibble::enframe(value = "package")
+#' }
 dependentPackages <- function(...)
   Map(R.oo::Package, gtools::getDependencies(...))
