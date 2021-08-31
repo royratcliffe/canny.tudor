@@ -24,7 +24,7 @@ upload_feather <- function(x, ...)
 #' final URL accumulates the scheme as a character vector with super- to
 #' sub-scheme ordering.
 #'
-#' The implementation repeatedly parses, that is re-parses, while non-null URL
+#' The implementation repeatedly parses, that is re-parses, while non-NULL URL
 #' components result in only a scheme-path pair. Note that URLs carry NULL
 #' values for non-existent URL components.
 #'
@@ -32,7 +32,7 @@ upload_feather <- function(x, ...)
 #' @return URL components with vectorised nested scheme.
 #' @export
 #' @examples
-#' url <- reparse_url("superscheme:subscheme://host/path")
+#' url <- canny.tudor::reparse_url("superscheme:subscheme://host/path")
 #' url$scheme
 #' # [1] "superscheme" "subscheme"
 reparse_url <- function(x) {
