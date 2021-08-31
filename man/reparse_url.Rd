@@ -24,7 +24,7 @@ components result in only a scheme-path pair. Note that URLs carry NULL
 values for non-existent URL components.
 }
 \examples{
-url <- reparse_url("superscheme:subscheme://host/path")
+url <- canny.tudor::reparse_url("superscheme:subscheme://host/path")
 url$scheme
 # [1] "superscheme" "subscheme"
 }
