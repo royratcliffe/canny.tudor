@@ -22,6 +22,7 @@ docker_system_info <- function() docker("system", "info")
 docker_info <- function() docker("info")
 
 #' Run Docker
+#' @param ... Docker arguments
 #' @export
 docker <- function(...)
   jsonlite::fromJSON(

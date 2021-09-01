@@ -6,6 +6,9 @@
 \usage{
 docker(...)
 }
+\arguments{
+\item{...}{Docker arguments}
+}
 \description{
 Run Docker
 }
