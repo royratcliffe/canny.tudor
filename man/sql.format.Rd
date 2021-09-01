@@ -13,7 +13,7 @@ sql.format(sql, ...)
 }
 \description{
 See example usage below. Arguments
-are named list elements corresponding to format parameters. Only `sql` is
+are named list elements corresponding to format parameters. Only \code{sql} is
 required; the rest have sensible defaults.
 
 See https://sqlformat.org/api/ for details. A usage limit exists: 500 requests
