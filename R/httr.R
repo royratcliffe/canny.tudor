@@ -16,3 +16,32 @@ upload_feather <- function(x, ...)
     feather::write_feather(x, path)
     httr::POST(body = httr::upload_file(path, type = "application/feather"), ...)
   })
+
+#' Parse and re-parse while only scheme and path
+#'
+#' Parses the given URL and continuously parses the resulting path so long as
+#' the result is only a scheme and path. This occurs for nested schemes. The
+#' final URL accumulates the scheme as a character vector with super- to
+#' sub-scheme ordering.
+#'
+#' The implementation repeatedly parses, that is re-parses, while non-NULL URL
+#' components result in only a scheme-path pair. Note that URLs carry NULL
+#' values for non-existent URL components.
+#'
+#' @param x URL to parse for components.
+#' @return URL components with vectorised nested scheme.
+#' @export
+#' @examples
+#' url <- canny.tudor::reparse_url("superscheme:subscheme://host/path")
+#' url$scheme
+#' # [1] "superscheme" "subscheme"
+reparse_url <- function(x) {
+  url <- httr::parse_url(x)
+  while (identical(names(Filter(Negate(is.null), url)), c("scheme", "path")) &&
+         !is.null((path_url <- httr::parse_url(url$path))$scheme)) {
+    scheme <- url$scheme
+    url <- path_url
+    url$scheme <- c(scheme, url$scheme)
+  }
+  url
+}
