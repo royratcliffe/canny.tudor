@@ -7,7 +7,7 @@
 docker(...)
 }
 \arguments{
-\item{...}{Docker arguments}
+\item{...}{Docker command arguments}
 }
 \description{
 Run Docker

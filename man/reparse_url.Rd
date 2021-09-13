@@ -19,7 +19,7 @@ final URL accumulates the scheme as a character vector with super- to
 sub-scheme ordering.
 }
 \details{
-The implementation repeatedly parses, that is re-parses, while non-null URL
+The implementation repeatedly parses, that is re-parses, while non-NULL URL
 components result in only a scheme-path pair. Note that URLs carry NULL
 values for non-existent URL components.
 }
