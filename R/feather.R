@@ -32,3 +32,5 @@ readFeather <- function(object)
     writeBin(object, path)
     feather::read_feather(path)
   })
+
+globalVariables(c("path"))
