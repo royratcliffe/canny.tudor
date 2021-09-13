@@ -19,7 +19,8 @@ is recalculated based on the resulting data, otherwise the grouping is kept as i
   }}
 }
 \description{
-You can use the extra arguments to filter the incoming project tibble by path or other criteria.
+You can use the extra arguments to filter the incoming project tibble by path
+or other criteria.
 }
 \examples{
 \dontrun{

@@ -15,5 +15,6 @@ list.gitlab.project.files(...)
   }}
 }
 \description{
-Runs iteratively for all tree-type files. The tree path becomes a new path for a sub-listing.
+Runs iteratively for all tree-type files. The tree path becomes a new path
+for a sub-listing.
 }
