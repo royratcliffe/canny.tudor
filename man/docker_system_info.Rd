@@ -7,7 +7,8 @@
 docker_system_info()
 }
 \value{
-List of system-wide information pairs. There are some 60 pairs, typically.
+List of system-wide information pairs. There are some 60 pairs,
+typically.
 }
 \description{
 System-wide Docker information
