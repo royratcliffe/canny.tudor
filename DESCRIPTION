@@ -10,11 +10,14 @@ Authors@R:
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Imports: 
+    dplyr,
     feather,
     fs,
+    gitlabr,
     gtools,
     httr,
     jsonlite,
+    magrittr,
     purrr,
     R.oo,
     rlang,
