@@ -23,7 +23,8 @@ list.gitlab.owner.projects <- function(...)
 
 #' Gets project identifier as integer
 #'
-#' You can use the extra arguments to filter the incoming project tibble by path or other criteria.
+#' You can use the extra arguments to filter the incoming project tibble by path
+#' or other criteria.
 #'
 #' @inheritDotParams dplyr::filter
 #' @importFrom magrittr %>%
@@ -42,7 +43,8 @@ globalVariables(c("id"))
 
 #' Lists tree recursively
 #'
-#' Runs iteratively for all tree-type files. The tree path becomes a new path for a sub-listing.
+#' Runs iteratively for all tree-type files. The tree path becomes a new path
+#' for a sub-listing.
 #'
 #' @inheritDotParams gitlabr::gl_list_files
 #' @importFrom magrittr %>%
