@@ -28,7 +28,7 @@ tibble::tibble(a = 1:10, b=letters[1:10])
 ```
 You can access the column names using `base::names` and then apply the resulting
 names to the table using the `[[` sub-setting operator, turning each column to
-its underlying vector each in turn. Tibbles recommand using `[[` in newer code.
+its underlying vector each in turn. Tibbles recommend using `[[` in newer code.
 
 Finally `base:typeof` tells you the vector type.
 
@@ -40,6 +40,7 @@ types.of <- function(x)
 It answers a named vector of character describing the type of each column paired
 with the name of the column.
 ```{r}
+library(canny.tudor)
 types.of(tibble::tibble(a=1:10, b=letters[1:10]))
 ```
 
@@ -48,6 +49,6 @@ Does the same approach work on non-tibble data frames? It does because it only
 relies on subset access operators.
 ```{r}
 df <- data.frame(x = 1.1, y = I(letters[1:10]))
-types.of(df)
+canny.tudor::types.of(df)
 ```
 
