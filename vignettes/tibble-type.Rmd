@@ -82,5 +82,6 @@ dplyr::tbl(db, "df") |>
   head(0) |> 
   dplyr::collect() |> 
   canny.tudor::types.of()
+DBI::dbDisconnect(db)
 ```
 
