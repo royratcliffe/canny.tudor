@@ -1,0 +1,53 @@
+---
+title: "Tibble Type"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tibble Type}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(canny.tudor)
+```
+
+Can you find the type of a `tibble::tibble`, meaning the types plural; that is,
+one for each of the table columns?
+
+## Take an example
+Two columns: one of `int`, the other of `chr`.
+```{r}
+tibble::tibble(a = 1:10, b=letters[1:10])
+```
+You can access the column names using `base::names` and then apply the resulting
+names to the table using the `[[` sub-setting operator, turning each column to
+its underlying vector each in turn. Tibbles recommand using `[[` in newer code.
+
+Finally `base:typeof` tells you the vector type.
+
+## Sketch implementation
+```{r}
+types.of <- function(x) 
+  sapply(names(x), function(y) typeof(x[[y]]))
+```
+It answers a named vector of character describing the type of each column paired
+with the name of the column.
+```{r}
+types.of(tibble::tibble(a=1:10, b=letters[1:10]))
+```
+
+## Data frames as well?
+Does the same approach work on non-tibble data frames? It does because it only
+relies on subset access operators.
+```{r}
+df <- data.frame(x = 1.1, y = I(letters[1:10]))
+types.of(df)
+```
+
