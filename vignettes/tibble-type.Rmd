@@ -19,7 +19,8 @@ library(canny.tudor)
 ```
 
 Can you find the type of a `tibble::tibble`, meaning the types plural; that is,
-one for each of the table columns?
+one for each of the table columns? If you ask for `base::typeof` you only see
+`"list"`.
 
 ## Take an example
 Two columns: one of `int`, the other of `chr`.
@@ -53,11 +54,16 @@ canny.tudor::types.of(df)
 ```
 
 ## Database frames
-And finally, what about data frame lazily-loaded from a database? Do types
-manifest themselves? And do they appear _before_ or _after_ collection of data
-by query execution? The simple answer is no, not without first collecting some
-rows. This includes no rows, or limiting rows to zero.
+And finally, what about data frames lazily-loaded from a database? Do the
+underlying column types manifest themselves? And do they appear _before_ or
+_after_ collection of data by query execution? The simple answer is no, not
+without first collecting some rows. This includes no rows, or limiting rows to
+zero.
 
+You might expect this result since the data frame does not yet exist, strictly
+speaking; only the promise exists until some SQL runs.
+
+### Try it
 First create an SQLite database and set up a table, called `df` short for data
 frame. Fill it with some test data.
 ```{r}
@@ -66,10 +72,11 @@ DBI::dbWriteTable(db, "df", data.frame(a=1:10, b=letters[1:10]))
 dplyr::tbl(db, "df")
 dplyr::tbl(db, "df") |> types.of()
 ```
-Using R 4.1+ built-in pipe operator. Uses `dplyr` to read back the table lazily
-and derive the types. No joy. You cannot access lazy table columns as you would
-an in-memory data frame. Answers `NULL` because the frame is not yet available
-locally.
+Above uses R 4.1+ built-in pipe operator; also uses `dplyr` to read back the
+table lazily and derive the types. No joy. You cannot access lazy table columns
+as you would an in-memory data frame.
+
+Column subset answers `NULL` because the frame is not yet available locally.
 ```{r}
 dplyr::tbl(db, "df")[["a"]]
 sapply(dplyr::tbl(db, "df") |> class(), \(x) methods(class = x))
@@ -84,4 +91,4 @@ dplyr::tbl(db, "df") |>
   canny.tudor::types.of()
 DBI::dbDisconnect(db)
 ```
-
+Joy!
