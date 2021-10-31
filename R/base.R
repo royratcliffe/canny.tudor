@@ -10,3 +10,13 @@
 #' @export
 strsplit.trimws <- function(x, split, ...)
   unlist(lapply(strsplit(x, split, ...), trimws))
+
+#' All sub-class methods
+#' @param x Object with class
+#' @return Methods by sub-class, list of character vectors
+#' @export
+#' @examples
+#' all_subclass_methods(0L)
+all_subclass_methods <- function(x)
+  sapply(class(x), function(x)
+    methods(class = x), simplify = FALSE)
