@@ -52,7 +52,7 @@ globalVariables(c("id"))
 list.gitlab.project.files <- function(...) {
   files <- gitlabr::gl_list_files(...)
   trees <- files[files$type == "tree", ]
-  while (length(trees) != 0) {
+  while (nrow(trees) != 0) {
     rows <- lapply(trees$path, function(x)
       gitlabr::gl_list_files(..., path = x)) %>%
       dplyr::bind_rows()
