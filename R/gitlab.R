@@ -72,4 +72,4 @@ list.gitlab.project.files <- function(...) {
 #' @export
 get.gitlab.blobs <- function(x, project = character(1L), ...)
   sapply(x$path[x$type == "blob"], function(x)
-    gitlabr::gl_get_file(project, URLencode(x, reserved = TRUE), ...))
+    gitlabr::gl_get_file(project, utils::URLencode(x, reserved = TRUE), ...))
