@@ -7,6 +7,5 @@ test_that("GitLab works", {
   blobs <- files[tools::file_ext(files$name) == "R", ] %>%
     head() %>%
     get.gitlab.blobs(project)
-  stopifnot(requireNamespace("stringr"))
-  expect_snapshot(stringr::str_length(blobs))
+  expect_snapshot(names(blobs))
 })

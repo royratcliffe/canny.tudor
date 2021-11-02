@@ -28,7 +28,8 @@
 ---
 
     Code
-      stringr::str_length(blobs)
+      names(blobs)
     Output
-      [1] 2277 6192 4721 4031 5834 9339
+      [1] "R/branches.R"   "R/ci.R"         "R/comments.R"   "R/connect.R"   
+      [5] "R/files.R"      "R/gitlab_api.R"
 
