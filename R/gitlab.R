@@ -62,3 +62,14 @@ list.gitlab.project.files <- function(...) {
   }
   files
 }
+
+#' Gets project blobs
+#'
+#' Encodes the file paths using \code{\link[utils]{URLencode}}.
+#'
+#' @param x Project files with path column.
+#' @param project Identifies which project to apply file paths to.
+#' @export
+get.gitlab.blobs <- function(x, project = character(1L), ...)
+  sapply(x$path[x$type == "blob"], function(x)
+    gitlabr::gl_get_file(project, URLencode(x, reserved = TRUE), ...))

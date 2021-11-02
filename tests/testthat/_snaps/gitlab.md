@@ -1,7 +1,7 @@
 # GitLab works
 
     Code
-      list.gitlab.project.files("30946364")
+      files
     Output
       # A tibble: 119 x 5
          id                                       name           type  path      mode 
@@ -17,4 +17,18 @@
        9 0eaf1415b3d9c6b13153cc129500e1f9c6c19604 .Rbuildignore  blob  .Rbuildi~ 1006~
       10 cde4a274040716803d8546f59261b7aca21f917d .gitattributes blob  .gitattr~ 1006~
       # ... with 109 more rows
+
+---
+
+    Code
+      names(files)
+    Output
+      [1] "id"   "name" "type" "path" "mode"
+
+---
+
+    Code
+      stringr::str_length(blobs)
+    Output
+      [1] 2277 6192 4721 4031 5834 9339
 
