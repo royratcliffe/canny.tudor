@@ -69,7 +69,8 @@ list.gitlab.project.files <- function(...) {
 #'
 #' @param x Project files with path column.
 #' @param project Identifies which project to apply file paths to.
+#' @inheritDotParams gitlabr::gl_get_file
 #' @export
 get.gitlab.blobs <- function(x, project = character(1L), ...)
   sapply(x$path[x$type == "blob"], function(x)
-    gitlabr::gl_get_file(project, URLencode(x, reserved = TRUE), ...))
+    gitlabr::gl_get_file(project, utils::URLencode(x, reserved = TRUE), ...))
