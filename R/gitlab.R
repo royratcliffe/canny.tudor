@@ -47,6 +47,7 @@ globalVariables(c("id"))
 #' for a sub-listing.
 #'
 #' @inheritDotParams gitlabr::gl_list_files
+#' @return Tibble of project files comprising tree and blob types.
 #' @importFrom magrittr %>%
 #' @export
 list.gitlab.project.files <- function(...) {

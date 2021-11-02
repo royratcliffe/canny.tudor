@@ -14,6 +14,9 @@ list.gitlab.project.files(...)
     \item{\code{ref}}{name of ref (commit branch or tag)}
   }}
 }
+\value{
+Tibble of project files comprising tree and blob types.
+}
 \description{
 Runs iteratively for all tree-type files. The tree path becomes a new path
 for a sub-listing.
