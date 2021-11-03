@@ -7,9 +7,9 @@
 create_if_not_exists(x, ...)
 }
 \arguments{
-\item{x}{Schema to create}
+\item{x}{Schema to create.}
 
-\item{...}{Extra arguments passed to method implementation}
+\item{...}{Extra arguments passed to method implementation.}
 }
 \description{
 Create scheme unless exists

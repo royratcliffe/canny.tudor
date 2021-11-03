@@ -7,10 +7,10 @@
 \method{create_if_not_exists}{schema}(x, .con = DBI::ANSI(), ...)
 }
 \arguments{
-\item{x}{Schema to create, if not existing}
+\item{x}{Schema to create, if not existing.}
 
 \item{.con}{Database connect to use for literal quoting and for executing the
-schema-glued statement}
+schema-glued statement.}
 
 \item{...}{
   Arguments passed on to \code{\link[DBI:dbExecute]{DBI::dbExecute}}

@@ -7,7 +7,7 @@
 \method{glue_sql}{schema}(x, ...)
 }
 \arguments{
-\item{x}{Schema to use for gluing}
+\item{x}{Schema to use for gluing.}
 
 \item{...}{
   Arguments passed on to \code{\link[glue:glue_sql]{glue::glue_sql}}

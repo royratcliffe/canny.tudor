@@ -7,9 +7,9 @@
 glue_sql(x, ...)
 }
 \arguments{
-\item{x}{Schema to use for gluing}
+\item{x}{Schema to use for gluing.}
 
-\item{...}{Extra arguments passed to method implementation}
+\item{...}{Extra arguments passed to method implementation.}
 }
 \description{
 Glue SQL schema

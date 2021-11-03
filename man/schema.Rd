@@ -7,7 +7,7 @@
 schema(x)
 }
 \arguments{
-\item{x}{Name of schema}
+\item{x}{Name of schema.}
 }
 \description{
 Define schema
