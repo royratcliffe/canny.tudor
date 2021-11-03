@@ -32,3 +32,24 @@ create_if_not_exists.schema <- function(x, .con = NULL, ...)
   DBI::dbExecute(.con,
                  glue_sql(x, "CREATE SCHEMA IF NOT EXISTS {`schema`}",
                           .con = .con), ...)
+
+#' Drop database entity
+#' @param x Entity to drop.
+#' @param ... Extra arguments passed to method implementation.
+#' @export
+db_drop <- function(x, ...) UseMethod("db_drop", x)
+
+#' Drop schema
+#' @param x Schema to drop.
+#' @export
+db_drop.schema <- function(x,
+                           if_exists = FALSE,
+                           cascade = FALSE, .con = NULL, ...) {
+  DBI::dbExecute(.con,
+                 glue_sql(x,
+                          paste(c("DROP", "SCHEMA",
+                                  if (if_exists) c("IF", "EXISTS"),
+                                  "{`schema`}",
+                                  if (cascade) "CASCADE"),
+                                collapse = " "), .con = .con), ...)
+}
