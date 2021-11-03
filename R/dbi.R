@@ -1,29 +1,29 @@
 #' Define schema
-#' @param x Name of schema
+#' @param x Name of schema.
 #' @export
 schema <- function(x) structure(x, class = "schema")
 
 #' Glue SQL schema
-#' @param x Schema to use for gluing
-#' @param ... Extra arguments passed to method implementation
+#' @param x Schema to use for gluing.
+#' @param ... Extra arguments passed to method implementation.
 #' @export
 glue_sql <- function(x, ...) UseMethod("glue_sql", x)
 
 #' Glue schema to SQL statement
-#' @param x Schema to use for gluing
+#' @param x Schema to use for gluing.
 #' @inheritDotParams glue::glue_sql
 glue_sql.schema <- function(x, ...) glue::glue_sql(..., schema = x)
 
 #' Create scheme unless exists
-#' @param x Schema to create
-#' @param ... Extra arguments passed to method implementation
+#' @param x Schema to create.
+#' @param ... Extra arguments passed to method implementation.
 #' @export
 create_if_not_exists <- function(x, ...) UseMethod("create_if_not_exists", x)
 
 #' Create scheme if it does not yet exist
-#' @param x Schema to create, if not existing
+#' @param x Schema to create, if not existing.
 #' @param .con Database connect to use for literal quoting and for executing the
-#'   schema-glued statement
+#'   schema-glued statement.
 #' @inheritDotParams DBI::dbExecute
 create_if_not_exists.schema <- function(x, .con = DBI::ANSI(), ...)
   DBI::dbExecute(.con,
