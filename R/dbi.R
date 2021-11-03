@@ -24,7 +24,8 @@ create_if_not_exists <- function(x, ...) UseMethod("create_if_not_exists", x)
 #' Create scheme if it does not yet exist
 #' @param x Schema to create, if not existing.
 #' @param .con Database connect to use for literal quoting and for executing the
-#'   schema-glued statement.
+#'   schema-glued statement. Create schema has no default connection. Uses the
+#'   same connection for quoting SQL and running it.
 #' @inheritDotParams DBI::dbExecute
 #' @export
 create_if_not_exists.schema <- function(x, .con = NULL, ...)

@@ -4,13 +4,14 @@
 \alias{create_if_not_exists.schema}
 \title{Create scheme if it does not yet exist}
 \usage{
-\method{create_if_not_exists}{schema}(x, .con = DBI::ANSI(), ...)
+\method{create_if_not_exists}{schema}(x, .con = NULL, ...)
 }
 \arguments{
 \item{x}{Schema to create, if not existing.}
 
 \item{.con}{Database connect to use for literal quoting and for executing the
-schema-glued statement.}
+schema-glued statement. Create schema has no default connection. Uses the
+same connection for quoting SQL and running it.}
 
 \item{...}{
   Arguments passed on to \code{\link[DBI:dbExecute]{DBI::dbExecute}}
