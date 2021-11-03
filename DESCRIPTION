@@ -10,10 +10,12 @@ Authors@R:
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Imports: 
+    DBI,
     dplyr,
     feather,
     fs,
     gitlabr,
+    glue,
     gtools,
     httr,
     jsonlite,
