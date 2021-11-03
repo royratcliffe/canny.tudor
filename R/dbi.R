@@ -27,7 +27,7 @@ create_if_not_exists <- function(x, ...) UseMethod("create_if_not_exists", x)
 #'   schema-glued statement.
 #' @inheritDotParams DBI::dbExecute
 #' @export
-create_if_not_exists.schema <- function(x, .con = DBI::ANSI(), ...)
+create_if_not_exists.schema <- function(x, .con = NULL, ...)
   DBI::dbExecute(.con,
                  glue_sql(x, "CREATE SCHEMA IF NOT EXISTS {`schema`}",
                           .con = .con), ...)
