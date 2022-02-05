@@ -31,4 +31,5 @@ jobs:
         with:
           r-version: ${{ matrix.r-version }}
       - name: Check R
-        run: R CMD check
+        run: rcmdcheck::rcmdcheck(args = "--no-manual", error_on = "error")
+        shell: Rscript {0}
