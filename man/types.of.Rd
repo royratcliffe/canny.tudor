@@ -7,7 +7,7 @@
 types.of(x)
 }
 \arguments{
-\item{x}{Vector}
+\item{x}{Vector or list}
 }
 \value{
 Named types, vector of character
