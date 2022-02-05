@@ -79,7 +79,7 @@ as you would an in-memory data frame.
 Column subset answers `NULL` because the frame is not yet available locally.
 ```{r}
 dplyr::tbl(db, "df")[["a"]]
-sapply(dplyr::tbl(db, "df") %>% class(), \(x) methods(class = x))
+sapply(dplyr::tbl(db, "df") %>% class(), function(x) methods(class = x))
 ```
 However, you *can* effectively select no rows to derive an empty data frame
 carrying empty column vectors but one empty vector for each column and with the
