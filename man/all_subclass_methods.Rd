@@ -16,5 +16,7 @@ Methods by sub-class, list of character vectors
 All sub-class methods
 }
 \examples{
+\dontrun{
 all_subclass_methods(0L)
+}
 }

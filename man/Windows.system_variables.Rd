@@ -9,3 +9,8 @@ Windows.system_variables()
 \description{
 Windows System Variables
 }
+\examples{
+\dontrun{
+Windows.system_variables()$Path
+}
+}
