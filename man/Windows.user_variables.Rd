@@ -9,3 +9,8 @@ Windows.user_variables()
 \description{
 Windows User Variables
 }
+\examples{
+\dontrun{
+Windows.user_variables()$Path
+}
+}

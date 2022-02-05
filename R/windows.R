@@ -1,15 +1,19 @@
 #' Windows User Variables
 #' @export
-#' @example
+#' @examples
+#' \dontrun{
 #' Windows.user_variables()$Path
+#' }
 Windows.user_variables <- function() {
   utils::readRegistry("Environment", "HCU")
 }
 
 #' Windows System Variables
 #' @export
-#' @example
+#' @examples
+#' \dontrun{
 #' Windows.system_variables()$Path
+#' }
 Windows.system_variables <- function() {
   utils::readRegistry(Windows.registry_path(
     "SYSTEM", "CurrentControlSet", "Control", "Session Manager", "Environment"
