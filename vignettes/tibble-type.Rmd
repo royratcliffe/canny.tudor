@@ -35,7 +35,7 @@ Finally `base:typeof` tells you the vector type.
 
 ## Sketch implementation
 ```{r}
-types.of <- function(x) 
+types.of <- function(x)
   sapply(names(x), function(y) typeof(x[[y]]))
 ```
 It answers a named vector of character describing the type of each column paired
@@ -85,9 +85,9 @@ However, you *can* effectively select no rows to derive an empty data frame
 carrying empty column vectors but one empty vector for each column and with the
 appropriate column type.
 ```{r}
-dplyr::tbl(db, "df") |> 
-  head(0) |> 
-  dplyr::collect() |> 
+dplyr::tbl(db, "df") |>
+  head(0) |>
+  dplyr::collect() |>
   canny.tudor::types.of()
 DBI::dbDisconnect(db)
 ```
