@@ -2,10 +2,10 @@
 
 export("%>%")
 export(.docker_config)
-export(all_subclass_methods)
 export(Windows.registry_path)
 export(Windows.system_variables)
 export(Windows.user_variables)
+export(all_subclass_methods)
 export(cement_as_string)
 export(dependentPackages)
 export(docker)
