@@ -70,7 +70,7 @@ frame. Fill it with some test data.
 DBI::dbConnect(RSQLite::SQLite()) -> db
 DBI::dbWriteTable(db, "df", data.frame(a=1:10, b=letters[1:10]))
 dplyr::tbl(db, "df")
-dplyr::tbl(db, "df") |> types.of()
+dplyr::tbl(db, "df") %>% types.of()
 ```
 Above uses R 4.1+ built-in pipe operator; also uses `dplyr` to read back the
 table lazily and derive the types. No joy. You cannot access lazy table columns
@@ -79,15 +79,15 @@ as you would an in-memory data frame.
 Column subset answers `NULL` because the frame is not yet available locally.
 ```{r}
 dplyr::tbl(db, "df")[["a"]]
-sapply(dplyr::tbl(db, "df") |> class(), \(x) methods(class = x))
+sapply(dplyr::tbl(db, "df") %>% class(), \(x) methods(class = x))
 ```
 However, you *can* effectively select no rows to derive an empty data frame
 carrying empty column vectors but one empty vector for each column and with the
 appropriate column type.
 ```{r}
-dplyr::tbl(db, "df") |>
-  head(0) |>
-  dplyr::collect() |>
+dplyr::tbl(db, "df") %>%
+  head(0) %>%
+  dplyr::collect() %>%
   canny.tudor::types.of()
 DBI::dbDisconnect(db)
 ```
