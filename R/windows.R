@@ -12,8 +12,7 @@ Windows.user_variables <- function() {
 #' Windows.system_variables()$Path
 Windows.system_variables <- function() {
   utils::readRegistry(Windows.registry_path(
-    "SYSTEM", "CurrentControlSet", "Control",
-    "Session Manager", "Environment"
+    "SYSTEM", "CurrentControlSet", "Control", "Session Manager", "Environment"
   ), "HLM")
 }
 
