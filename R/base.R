@@ -12,7 +12,7 @@ strsplit.trimws <- function(x, split, ...)
   unlist(lapply(strsplit(x, split, ...), trimws))
 
 #' Types of vector
-#' @param x Vector
+#' @param x Vector or list
 #' @return Named types, vector of character
 #' @export
 types.of <- function(x) sapply(names(x), function(y) typeof(x[[y]]))
