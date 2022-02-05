@@ -2,6 +2,8 @@
 
 export("%>%")
 export(.docker_config)
+export(Sys.java_home)
+export(Sys.setenv_java_home)
 export(Windows.registry_path)
 export(Windows.system_variables)
 export(Windows.user_variables)
