@@ -30,12 +30,5 @@ jobs:
         uses: r-lib/actions/setup-r@v1
         with:
           r-version: ${{ matrix.r-version }}
-      - name: Install packages
-        run: install.packages("devtools", dependencies = TRUE)
-        shell: Rscript {0}
-      - name: Install development dependencies
-        run: devtools::install_dev_deps()
-        shell: Rscript {0}
-      - name: Check
-        run: devtools::check()
-        shell: Rscript {0}
+      - name: Check R
+        run: R CMD check
