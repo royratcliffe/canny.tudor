@@ -11,14 +11,8 @@
 strsplit.trimws <- function(x, split, ...)
   unlist(lapply(strsplit(x, split, ...), trimws))
 
-#' All sub-class methods
-#' @param x Object with class
-#' @return Methods by sub-class, list of character vectors
+#' Types of vector
+#' @param x Vector
+#' @return Named types, vector of character
 #' @export
-#' @examples
-#' \dontrun{
-#' all_subclass_methods(0L)
-#' }
-all_subclass_methods <- function(x)
-  sapply(class(x), function(x)
-    utils::methods(class = x), simplify = FALSE)
+types.of <- function(x) sapply(names(x), function(y) typeof(x[[y]]))
