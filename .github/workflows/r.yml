@@ -16,11 +16,11 @@ on:
 
 jobs:
   build:
+    runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
         r-version: [3.6, 4.0, 4.1]
         operating-system: [macos-latest, ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.operating-system }}
 
     # https://github.com/r-lib/actions
     steps:
