@@ -1,9 +1,12 @@
 #' Copy from one environment to another
-#' @param from.env Environment to copy from
-#' @param to.env Environment to copy to
+#' @param from.envir Environment to copy from
+#' @param to.pos `-1L` for the calling environment
+#' @param to.envir Environment to copy to
 #' @export
-copy.env <- function(from.env, to.env) {
-  for (x in ls(from.env)) {
-    assign(x, get(x, from.env), to.env)
+copy.env <- function(from.envir,
+                     to.pos = -1L,
+                     to.envir = as.environment(to.pos)) {
+  for (x in ls(from.envir)) {
+    assign(x, get(x, from.envir), to.envir)
   }
 }

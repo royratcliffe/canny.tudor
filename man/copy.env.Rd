@@ -4,12 +4,14 @@
 \alias{copy.env}
 \title{Copy from one environment to another}
 \usage{
-copy.env(from.env, to.env)
+copy.env(from.envir, to.pos = -1L, to.envir = as.environment(to.pos))
 }
 \arguments{
-\item{from.env}{Environment to copy from}
+\item{from.envir}{Environment to copy from}
 
-\item{to.env}{Environment to copy to}
+\item{to.pos}{\code{-1L} for the calling environment}
+
+\item{to.envir}{Environment to copy to}
 }
 \description{
 Copy from one environment to another
