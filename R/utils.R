@@ -62,7 +62,7 @@ unzip_bin <- function(x, ...) {
 #' @examples
 #' # Note the trailing dollar in the pattern below. Only matches path names
 #' # ending with `zip` extension.
-#' zippers <- unzzz::vunzip_bin(list.files(pattern = "*.zip$"))
+#' zippers <- canny.tudor::vunzip_bin(list.files(pattern = "*.zip$"))
 #'
 #' # This is how you might iterate the resulting list of lists, of zippers of
 #' # members, using nested `for` loops.
