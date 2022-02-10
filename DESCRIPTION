@@ -22,7 +22,9 @@ Imports:
     R.oo,
     rlang,
     tibble,
-    withr
+    withr,
+    xfun,
+    zip
 Suggests: 
     rmarkdown,
     knitr,
