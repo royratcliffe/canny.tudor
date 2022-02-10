@@ -4,6 +4,7 @@ test_that("unzip_bin works", {
   txtfile <- tempfile(fileext = ".txt")
   on.exit(unlink(txtfile))
   hello <- "你好"
+  expect_equal(Encoding(hello), "UTF-8")
   writeLines(hello, txtfile, useBytes = TRUE)
   zip::zip(zipfile, files = txtfile, mode = "cherry-pick")
   ziplist <- zip::zip_list(zipfile)
@@ -16,7 +17,9 @@ test_that("unzip_bin works", {
 
   bin <- bins[[filename]]
   char <- rawToChar(bin)
+  expect_equal(Encoding(char), "unknown")
   Encoding(char) <- "UTF-8"
-  lines <- readLines(textConnection(char))
+  expect_equal(Encoding(char), "UTF-8")
+  lines <- readLines(textConnection(char, encoding = "UTF-8"))
   expect_equal(lines[1], hello)
 })
