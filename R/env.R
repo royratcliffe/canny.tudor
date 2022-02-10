@@ -6,6 +6,8 @@
 #' @param from.envir Environment to copy from
 #' @param to.pos `-1L` for the calling environment
 #' @param to.envir Environment to copy to
+#' @param all.names logical; `TRUE` for all names copied, including those
+#'   beginning with `.` otherwise omitted
 #' @export
 copy.env <- function(from.envir,
                      to.pos = -1L,
