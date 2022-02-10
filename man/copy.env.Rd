@@ -4,7 +4,12 @@
 \alias{copy.env}
 \title{Copy from one environment to another}
 \usage{
-copy.env(from.envir, to.pos = -1L, to.envir = as.environment(to.pos))
+copy.env(
+  from.envir,
+  to.pos = -1L,
+  to.envir = as.environment(to.pos),
+  all.names = FALSE
+)
 }
 \arguments{
 \item{from.envir}{Environment to copy from}
@@ -12,7 +17,11 @@ copy.env(from.envir, to.pos = -1L, to.envir = as.environment(to.pos))
 \item{to.pos}{\code{-1L} for the calling environment}
 
 \item{to.envir}{Environment to copy to}
+
+\item{all.names}{logical; \code{TRUE} for all names copied, including those
+beginning with \code{.} otherwise omitted}
 }
 \description{
-Copy from one environment to another
+Performs only shallow copy; does \emph{not} recurse when a name pairs with a
+sub-environment.
 }
