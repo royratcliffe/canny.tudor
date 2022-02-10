@@ -17,5 +17,6 @@ test_that("unzip_bin works", {
   bin <- bins[[filename]]
   char <- rawToChar(bin)
   Encoding(char) <- "UTF-8"
-  expect_equal(char, paste0(hello, "\r\n"))
+  lines <- readLines(textConnection(char))
+  expect_equal(lines[1], hello)
 })
