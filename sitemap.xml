@@ -25,6 +25,9 @@
     <loc>/articles/tibble-type.html</loc>
   </url>
   <url>
+    <loc>/articles/unzip-raw-binary.html</loc>
+  </url>
+  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
@@ -109,6 +112,18 @@
     <loc>/reference/types.of.html</loc>
   </url>
   <url>
+    <loc>/reference/unzip_bin.character.html</loc>
+  </url>
+  <url>
+    <loc>/reference/unzip_bin.html</loc>
+  </url>
+  <url>
+    <loc>/reference/unzip_bin.raw.html</loc>
+  </url>
+  <url>
     <loc>/reference/upload_feather.html</loc>
+  </url>
+  <url>
+    <loc>/reference/vunzip_bin.html</loc>
   </url>
 </urlset>
