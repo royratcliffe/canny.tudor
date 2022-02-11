@@ -20,6 +20,7 @@ test_that("unzip_bin works", {
   expect_equal(Encoding(char), "unknown")
   Encoding(char) <- "UTF-8"
   expect_equal(Encoding(char), "UTF-8")
-  lines <- readLines(textConnection(char, encoding = "UTF-8"))
+  con <- textConnection(char, encoding = "UTF-8")
+  lines <- readLines(con, encoding = "UTF-8")
   expect_equal(lines[1], hello)
 })
