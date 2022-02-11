@@ -1,8 +1,8 @@
 ---
-title: "Technical Note 01"
+title: "Unzip Raw Binary"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Technical Note 01}
+  %\VignetteIndexEntry{Unzip Raw Binary}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
