@@ -13,3 +13,18 @@ collect_table_column_classes <- function(x, ...) {
 collect_table_column_classes.dm <- function(x, ...) {
   lapply(x, function(y) sapply(dplyr::collect(y, n = 0L), class))
 }
+
+#' Collect All Column Name and Class by Table
+#' @param x Data model, \code{dm} instance.
+#' @inheritDotParams collect_name_and_class
+#' @export
+collect_column_classes_by_table <- function(x, ...) {
+  UseMethod("collect_column_classes_by_table")
+}
+
+#' @export
+collect_column_classes_by_table.dm <- function(x, ...) {
+  dplyr::bind_rows(
+    purrr::imap(x, ~ collect_name_and_class(.x, table = .y, ...))
+  )
+}
