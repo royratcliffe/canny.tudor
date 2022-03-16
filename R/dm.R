@@ -15,6 +15,9 @@ collect_table_column_classes.dm <- function(x, ...) {
 }
 
 #' Collect All Column Name and Class by Table
+#'
+#' Automatically groups by table.
+#'
 #' @param x Data model, \code{dm} instance.
 #' @inheritDotParams purrr::imap
 #' @export
@@ -24,7 +27,8 @@ collect_column_classes_by_table <- function(x, ...) {
 
 #' @export
 collect_column_classes_by_table.dm <- function(x, ...) {
-  dplyr::bind_rows(
-    purrr::imap(x, ~ collect_name_and_class(.x, table = .y), ...)
-  )
+  dm::dm_get_tables(x) %>%
+    purrr::imap(~ collect_name_and_class(.x, table = .y), ...) %>%
+    dplyr::bind_rows() %>%
+    dplyr::group_by(table)
 }
