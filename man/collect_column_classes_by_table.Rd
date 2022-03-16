@@ -10,11 +10,30 @@ collect_column_classes_by_table(x, ...)
 \item{x}{Data model, \code{dm} instance.}
 
 \item{...}{
-  Arguments passed on to \code{\link[=collect_name_and_class]{collect_name_and_class}}
+  Arguments passed on to \code{\link[purrr:imap]{purrr::imap}}
   \describe{
-    \item{\code{}}{}
+    \item{\code{.x}}{A list or atomic vector.}
+    \item{\code{.f}}{A function, formula, or vector (not necessarily atomic).
+
+If a \strong{function}, it is used as is.
+
+If a \strong{formula}, e.g. \code{~ .x + 2}, it is converted to a function. There
+are three ways to refer to the arguments:
+\itemize{
+\item For a single argument function, use \code{.}
+\item For a two argument function, use \code{.x} and \code{.y}
+\item For more arguments, use \code{..1}, \code{..2}, \code{..3} etc
+}
+
+This syntax allows you to create very compact anonymous functions.
+
+If \strong{character vector}, \strong{numeric vector}, or \strong{list}, it is
+converted to an extractor function. Character vectors index by
+name and numeric vectors index by position; use a list to index
+by position and name at different levels. If a component is not
+present, the value of \code{.default} will be returned.}
   }}
 }
 \description{
-Collect All Column Name and Class by Table
+Automatically groups by table.
 }

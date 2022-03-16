@@ -37,5 +37,7 @@ character type.
 }
 \description{
 Performs a zero-row collection on the incoming frame in order to obtain an
-empty \code{\link[tibble]{tibble}}.
+empty \code{\link[tibble]{tibble}}. Accesses only the top-most sub-class.
+Asking for \code{\link[base]{class}} answers a vector of classes including
+all super-classes.
 }
