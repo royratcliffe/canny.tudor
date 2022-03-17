@@ -29,8 +29,7 @@ collect_column_classes_by_table <- function(x, ...) {
 
 #' @export
 collect_column_classes_by_table.dm <- function(x, ...) {
-  all_pks <- dm::dm_get_all_pks(dm)
-  all_pks$pk_col <- unlist(all_pks$pk_col)
+  all_pks <- dm_get_all_pks(dm)
   dm::dm_get_tables(x) %>%
     purrr::imap(~ collect_name_and_class(.x, table = .y), ...) %>%
     dplyr::bind_rows() %>%
@@ -40,4 +39,19 @@ collect_column_classes_by_table.dm <- function(x, ...) {
       all_pks$table == table & column == all_pks$pk_col,
     ]) != 0L) %>%
     dplyr::group_by(table)
+}
+
+#' Get All Primary Keys from Data Model
+#'
+#' Gets all keys but also unlists the \code{pk_col} column.
+#'
+#' @inheritDotParams dm::dm_get_all_pks
+#' @return Data frame of two variables: \code{table} of character and
+#'   \code{pk_col} for the primary-key column, also of character.
+#' @export
+dm_get_all_pks <- function(...) {
+  stopifnot(requireNamespace("dm", quietly = TRUE))
+  all_pks <- dm::dm_get_all_pks(...)
+  all_pks$pk_col <- unlist(all_pks$pk_col)
+  all_pks
 }
