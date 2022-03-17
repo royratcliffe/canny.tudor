@@ -34,9 +34,10 @@ collect_column_classes_by_table.dm <- function(x, ...) {
   dm::dm_get_tables(x) %>%
     purrr::imap(~ collect_name_and_class(.x, table = .y), ...) %>%
     dplyr::bind_rows() %>%
+    dplyr::rename(column = name) %>%
     dplyr::rowwise() %>%
     dplyr::mutate(pk = nrow(all_pks[
-      all_pks$table == table & name == all_pks$pk_col,
+      all_pks$table == table & column == all_pks$pk_col,
     ]) != 0L) %>%
     dplyr::group_by(table)
 }
