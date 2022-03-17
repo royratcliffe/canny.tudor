@@ -55,3 +55,15 @@ dm_get_all_pks <- function(...) {
   all_pks$pk_col <- unlist(all_pks$pk_col)
   all_pks
 }
+
+#' Get All Primary Key Columns
+#'
+#' @inheritDotParams dm_get_all_pks
+#' @return Data frame of \code{table} and \code{pk_cols}; the latter collecting
+#'   a list-wrapped vector of sorted primary-key columns.
+#' @export
+dm_get_all_pk_cols <- function(...) {
+  dm_get_all_pks(...) %>%
+    dplyr::group_by(table) %>%
+    dplyr::summarise(pk_cols = list(sort(dplyr::cur_data()$pk_col)))
+}
