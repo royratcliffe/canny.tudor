@@ -35,5 +35,7 @@ present, the value of \code{.default} will be returned.}
   }}
 }
 \description{
-Automatically groups by table.
+Automatically groups by table. Adds a new logical column \code{pk} for
+whether or not the table-column tuple operates as part of a primary key,
+either alone or part of a composite primary key.
 }
