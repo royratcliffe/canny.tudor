@@ -43,7 +43,9 @@ collect_column_classes_by_table.dm <- function(x, ...) {
 
 #' Get All Primary Keys from Data Model
 #'
-#' Gets all keys but also unlists the \code{pk_col} column.
+#' Gets all keys but also un-lists the \code{pk_col} column. The column is a
+#' list rather than a vector by default; applying \code{\link[base]{unlist}}
+#' vectorises the list.
 #'
 #' @inheritDotParams dm::dm_get_all_pks
 #' @return Data frame of two variables: \code{table} of character and

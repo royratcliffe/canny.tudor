@@ -21,5 +21,7 @@ Data frame of two variables: \code{table} of character and
 \code{pk_col} for the primary-key column, also of character.
 }
 \description{
-Gets all keys but also unlists the \code{pk_col} column.
+Gets all keys but also un-lists the \code{pk_col} column. The column is a
+list rather than a vector by default; applying \code{\link[base]{unlist}}
+vectorises the list.
 }
