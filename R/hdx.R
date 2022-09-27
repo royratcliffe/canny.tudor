@@ -1,5 +1,10 @@
 #' Half-duplex socket communication
 #' @description Writes then reads a socket connection.
+#' @details The second half of the half-duplex communication, the scan half,
+#'   terminates on remote buffer flush, not necessarily on a line termination.
+#'   Typically the server side socket \emph{will} automatically flush when it
+#'   sees a line terminator. It could however flush for other reasons, in which
+#'   case the scan will complete.
 #' @param x Socket connection.
 #' @param text Lines of text to write to the socket connection, a character
 #'   vector. Writes all the lines before reading.
