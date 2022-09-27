@@ -6,6 +6,28 @@
 \usage{
 \method{vhdx}{sockconn}(x, text, write.sep = "\\n", write.useBytes = FALSE, timeout = NULL, ...)
 }
+\arguments{
+\item{...}{
+  Arguments passed on to \code{\link[=hdx.sockconn]{hdx.sockconn}}
+  \describe{
+    \item{\code{x}}{Socket connection.}
+    \item{\code{text}}{Lines of text to write to the socket connection, a character
+vector. Writes all the lines before reading.}
+    \item{\code{write.sep}}{Line separator written after every line of \code{text}, a
+character string defaulting to a single new-line character \code{"\n"}.}
+    \item{\code{write.useBytes}}{Suppresses re-encoding of marked strings.}
+    \item{\code{timeout}}{Seconds to wait for ready socket, a numeric; or wait
+indefinitely, \code{NULL}.}
+  }}
+}
 \description{
-Vectorised half-duplex socket communication
+Vectorises on text.
+}
+\details{
+Scans after every character string.
+}
+\examples{
+\dontrun{
+vhdx(con, letters[1:3], write.sep = "", what = character())
+}
 }

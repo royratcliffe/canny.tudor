@@ -157,6 +157,13 @@ indefinitely, \code{NULL}.}
 \description{
 Writes then reads a socket connection.
 }
+\details{
+The second half of the half-duplex communication, the scan half,
+terminates on remote buffer flush, not necessarily on a line termination.
+Typically the server side socket \emph{will} automatically flush when it
+sees a line terminator. It could however flush for other reasons, in which
+case the scan will complete.
+}
 \examples{
 \dontrun{
 hdx(con, c("hello", "world"), what = character())
