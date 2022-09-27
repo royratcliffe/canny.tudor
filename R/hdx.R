@@ -27,11 +27,20 @@ hdx.sockconn <- function(x, text,
 }
 
 #' Vectorised half-duplex socket communication
+#' @description Vectorises on text.
+#' @details Scans after every character string.
+#' @inheritDotParams hdx.sockconn
 #' @export
+#' @examples
+#' \dontrun{
+#' vhdx(con, letters[1:3], write.sep = "", what = character())
+#' }
 vhdx.sockconn <- Vectorize(hdx.sockconn, "text")
 
+#' Half-duplex communication
 #' @export
 hdx <- function(x, ...) UseMethod("hdx", x)
 
+#' Vectorised half-duplex communication
 #' @export
 vhdx <- function(x, ...) UseMethod("vhdx", x)
