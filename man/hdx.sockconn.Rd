@@ -2,7 +2,7 @@
 % Please edit documentation in R/hdx.R
 \name{hdx.sockconn}
 \alias{hdx.sockconn}
-\title{Half-duplex over socket communication}
+\title{Half-duplex socket communication}
 \usage{
 \method{hdx}{sockconn}(x, text, write.sep = "\\n", write.useBytes = FALSE, timeout = NULL, ...)
 }
@@ -156,4 +156,9 @@ indefinitely, \code{NULL}.}
 }
 \description{
 Writes then reads a socket connection.
+}
+\examples{
+\dontrun{
+hdx(con, c("hello", "world"), what = character())
+}
 }
