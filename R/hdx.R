@@ -29,6 +29,7 @@ hdx.sockconn <- function(x, text,
 #' Vectorised half-duplex socket communication
 #' @description Vectorises on text.
 #' @details Scans after every character string.
+#' @inheritParams hdx.sockconn
 #' @inheritDotParams hdx.sockconn
 #' @export
 #' @examples
@@ -38,9 +39,13 @@ hdx.sockconn <- function(x, text,
 vhdx.sockconn <- Vectorize(hdx.sockconn, "text")
 
 #' Half-duplex communication
+#' @param x Socket connection.
+#' @inheritDotParams hdx.sockconn
 #' @export
 hdx <- function(x, ...) UseMethod("hdx", x)
 
 #' Vectorised half-duplex communication
+#' @param x Socket connection.
+#' @inheritDotParams hdx.sockconn
 #' @export
 vhdx <- function(x, ...) UseMethod("vhdx", x)
