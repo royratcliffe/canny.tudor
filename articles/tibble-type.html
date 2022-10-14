@@ -43,13 +43,16 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/pairwise-zipping.html">Pairwise Zipping</a>
+    </li>
+    <li>
       <a href="../articles/tibble-type.html">Tibble Type</a>
     </li>
     <li>
@@ -82,27 +85,27 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">canny.tudor</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">canny.tudor</span><span class="op">)</span></span></code></pre></div>
 <p>Can you find the type of a <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble</a></code>, meaning the types plural; that is, one for each of the table columns? If you ask for <code><a href="https://rdrr.io/r/base/typeof.html" class="external-link">base::typeof</a></code> you only see <code>"list"</code>.</p>
 <div class="section level2">
 <h2 id="take-an-example">Take an example<a class="anchor" aria-label="anchor" href="#take-an-example"></a>
 </h2>
 <p>Two columns: one of <code>int</code>, the other of <code>chr</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, b<span class="op">=</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 2</span></span>
-<span class="co">#&gt;        a b    </span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 a    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2 b    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     3 c    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     4 d    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     5 e    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     6 f    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     7 g    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     8 h    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     9 i    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    10 j</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, b<span class="op">=</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 2</span></span></span>
+<span><span class="co">#&gt;        a b    </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 a    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2 b    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     3 c    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     4 d    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     5 e    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     6 f    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     7 g    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     8 h    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     9 i    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    10 j</span></span></code></pre></div>
 <p>You can access the column names using <code><a href="https://rdrr.io/r/base/names.html" class="external-link">base::names</a></code> and then apply the resulting names to the table using the <code>[[</code> sub-setting operator, turning each column to its underlying vector each in turn. Tibbles recommend using <code>[[</code> in newer code.</p>
 <p>Finally <code>base:typeof</code> tells you the vector type.</p>
 </div>
@@ -110,24 +113,24 @@
 <h2 id="sketch-implementation">Sketch implementation<a class="anchor" aria-label="anchor" href="#sketch-implementation"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">types.of</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/typeof.html" class="external-link">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">[[</span><span class="va">y</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">types.of</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/typeof.html" class="external-link">typeof</a></span><span class="op">(</span><span class="va">x</span><span class="op">[[</span><span class="va">y</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>It answers a named vector of character describing the type of each column paired with the name of the column.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">canny.tudor</span><span class="op">)</span>
-<span class="fu"><a href="../reference/types.of.html">types.of</a></span><span class="op">(</span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>a<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, b<span class="op">=</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt;           a           b </span>
-<span class="co">#&gt;   "integer" "character"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">canny.tudor</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/types.of.html">types.of</a></span><span class="op">(</span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>a<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, b<span class="op">=</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;           a           b </span></span>
+<span><span class="co">#&gt;   "integer" "character"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="data-frames-as-well">Data frames as well?<a class="anchor" aria-label="anchor" href="#data-frames-as-well"></a>
 </h2>
 <p>Does the same approach work on non-tibble data frames? It does because it only relies on subset access operators.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1.1</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
-<span class="fu">canny.tudor</span><span class="fu">::</span><span class="fu"><a href="../reference/types.of.html">types.of</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span>
-<span class="co">#&gt;           x           y </span>
-<span class="co">#&gt;    "double" "character"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1.1</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">canny.tudor</span><span class="fu">::</span><span class="fu"><a href="../reference/types.of.html">types.of</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span><span class="co">#&gt;           x           y </span></span>
+<span><span class="co">#&gt;    "double" "character"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="database-frames">Database frames<a class="anchor" aria-label="anchor" href="#database-frames"></a>
@@ -139,62 +142,62 @@
 </h3>
 <p>First create an SQLite database and set up a table, called <code>df</code> short for data frame. Fill it with some test data.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html" class="external-link">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">db</span>
-<span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbWriteTable.html" class="external-link">dbWriteTable</a></span><span class="op">(</span><span class="va">db</span>, <span class="st">"df"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, b<span class="op">=</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
-<span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">db</span>, <span class="st">"df"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># Source:   table&lt;df&gt; [?? x 2]</span></span>
-<span class="co">#&gt; <span style="color: #949494;"># Database: sqlite 3.37.0 []</span></span>
-<span class="co">#&gt;        a b    </span>
-<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 a    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2 b    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     3 c    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     4 d    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     5 e    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     6 f    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     7 g    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     8 h    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     9 i    </span>
-<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    10 j</span>
-<span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">db</span>, <span class="st">"df"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/types.of.html">types.of</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;    src    ops </span>
-<span class="co">#&gt; "list" "list"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html" class="external-link">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">db</span></span>
+<span><span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbWriteTable.html" class="external-link">dbWriteTable</a></span><span class="op">(</span><span class="va">db</span>, <span class="st">"df"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, b<span class="op">=</span><span class="va">letters</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">db</span>, <span class="st">"df"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Source:   table&lt;df&gt; [10 x 2]</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># Database: sqlite 3.39.4 []</span></span></span>
+<span><span class="co">#&gt;        a b    </span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1 a    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2 b    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     3 c    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     4 d    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     5 e    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     6 f    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     7 g    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     8 h    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     9 i    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    10 j</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">db</span>, <span class="st">"df"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/types.of.html">types.of</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;        src lazy_query </span></span>
+<span><span class="co">#&gt;     "list"     "list"</span></span></code></pre></div>
 <p>Above uses R 4.1+ built-in pipe operator; also uses <code>dplyr</code> to read back the table lazily and derive the types. No joy. You cannot access lazy table columns as you would an in-memory data frame.</p>
 <p>Column subset answers <code>NULL</code> because the frame is not yet available locally.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">db</span>, <span class="st">"df"</span><span class="op">)</span><span class="op">[[</span><span class="st">"a"</span><span class="op">]</span><span class="op">]</span>
-<span class="co">#&gt; NULL</span>
-<span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">db</span>, <span class="st">"df"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/methods.html" class="external-link">methods</a></span><span class="op">(</span>class <span class="op">=</span> <span class="va">x</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; $tbl_SQLiteConnection</span>
-<span class="co">#&gt; no methods found</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $tbl_dbi</span>
-<span class="co">#&gt; no methods found</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $tbl_sql</span>
-<span class="co">#&gt; [1] as.data.frame print        </span>
-<span class="co">#&gt; see '?methods' for accessing help and source code</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $tbl_lazy</span>
-<span class="co">#&gt;  [1] [[&lt;-          [&lt;-           $&lt;-           as.data.frame coerce       </span>
-<span class="co">#&gt;  [6] dim           dimnames      filter        head          initialize   </span>
-<span class="co">#&gt; [11] intersect     Ops           print         setdiff       show         </span>
-<span class="co">#&gt; [16] slotsFromS3   tail          union        </span>
-<span class="co">#&gt; see '?methods' for accessing help and source code</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $tbl</span>
-<span class="co">#&gt;  [1] [[&lt;-        [&lt;-         $&lt;-         coerce      format      initialize </span>
-<span class="co">#&gt;  [7] Ops         print       show        slotsFromS3</span>
-<span class="co">#&gt; see '?methods' for accessing help and source code</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">db</span>, <span class="st">"df"</span><span class="op">)</span><span class="op">[[</span><span class="st">"a"</span><span class="op">]</span><span class="op">]</span></span>
+<span><span class="co">#&gt; NULL</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">db</span>, <span class="st">"df"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/class.html" class="external-link">class</a></span><span class="op">(</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/methods.html" class="external-link">methods</a></span><span class="op">(</span>class <span class="op">=</span> <span class="va">x</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; $tbl_SQLiteConnection</span></span>
+<span><span class="co">#&gt; no methods found</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $tbl_dbi</span></span>
+<span><span class="co">#&gt; no methods found</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $tbl_sql</span></span>
+<span><span class="co">#&gt; [1] as.data.frame print        </span></span>
+<span><span class="co">#&gt; see '?methods' for accessing help and source code</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $tbl_lazy</span></span>
+<span><span class="co">#&gt;  [1] [[&lt;-          [&lt;-           $&lt;-           as.data.frame coerce       </span></span>
+<span><span class="co">#&gt;  [6] dim           dimnames      filter        head          initialize   </span></span>
+<span><span class="co">#&gt; [11] intersect     Ops           print         setdiff       show         </span></span>
+<span><span class="co">#&gt; [16] slotsFromS3   tail          union        </span></span>
+<span><span class="co">#&gt; see '?methods' for accessing help and source code</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $tbl</span></span>
+<span><span class="co">#&gt;  [1] [[&lt;-        [&lt;-         $&lt;-         coerce      format      initialize </span></span>
+<span><span class="co">#&gt;  [7] Ops         print       show        slotsFromS3</span></span>
+<span><span class="co">#&gt; see '?methods' for accessing help and source code</span></span></code></pre></div>
 <p>However, you <em>can</em> effectively select no rows to derive an empty data frame carrying empty column vectors but one empty vector for each column and with the appropriate column type.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">db</span>, <span class="st">"df"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html" class="external-link">collect</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span>
-  <span class="fu">canny.tudor</span><span class="fu">::</span><span class="fu"><a href="../reference/types.of.html">types.of</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt;           a           b </span>
-<span class="co">#&gt;   "integer" "character"</span>
-<span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbDisconnect.html" class="external-link">dbDisconnect</a></span><span class="op">(</span><span class="va">db</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">db</span>, <span class="st">"df"</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html" class="external-link">collect</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">canny.tudor</span><span class="fu">::</span><span class="fu"><a href="../reference/types.of.html">types.of</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;           a           b </span></span>
+<span><span class="co">#&gt;   "integer" "character"</span></span>
+<span><span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbDisconnect.html" class="external-link">dbDisconnect</a></span><span class="op">(</span><span class="va">db</span><span class="op">)</span></span></code></pre></div>
 <p>Joy!</p>
 </div>
 </div>
@@ -217,7 +220,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

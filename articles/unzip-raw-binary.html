@@ -43,13 +43,16 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/pairwise-zipping.html">Pairwise Zipping</a>
+    </li>
+    <li>
       <a href="../articles/tibble-type.html">Tibble Type</a>
     </li>
     <li>
@@ -82,17 +85,17 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">canny.tudor</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">canny.tudor</span><span class="op">)</span></span></code></pre></div>
 <p>In R, you cannot easily or conveniently unzip a zipped file from a raw object and access their raw zipped members. Yet this is a useful requirement. Zip files comprise member pairs where each member has a name and a sequence of bytes. The name itself is just a string defining the file name and any subdirectory paths using forward-slash delimiters. Note, the zip files does <em>not</em> directly model a sub-directory tree.</p>
 <div class="section level2">
 <h2 id="problem-statement">Problem statement<a class="anchor" aria-label="anchor" href="#problem-statement"></a>
 </h2>
 <p>Take any zip file, <code>a.zip</code> for example. It has one text file called <code>a.txt</code>. The following statement creates the zip file.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/zip.html" class="external-link">zip</a></span><span class="op">(</span><span class="st">"a.zip"</span>, <span class="st">"a.txt"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/zip.html" class="external-link">zip</a></span><span class="op">(</span><span class="st">"a.zip"</span>, <span class="st">"a.txt"</span><span class="op">)</span></span></code></pre></div>
 <p>You can read it entirely using <code><a href="https://rdrr.io/pkg/xfun/man/read_bin.html" class="external-link">xfun::read_bin</a></code>, short for:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">readBin</a></span><span class="op">(</span><span class="va">x</span>, what <span class="op">=</span> <span class="st">"raw"</span>, n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.info.html" class="external-link">file.info</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">$</span><span class="va">size</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">readBin</a></span><span class="op">(</span><span class="va">x</span>, what <span class="op">=</span> <span class="st">"raw"</span>, n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.info.html" class="external-link">file.info</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">$</span><span class="va">size</span><span class="op">)</span></span></code></pre></div>
 <p>where <code>x</code> is the name of the file. The result is an object of raw bytes. We want to transform this single raw sequence of bytes to a list of raw bytes with one list item for each member.</p>
 <p>Unzipping disregards the member modification times.</p>
 </div>
@@ -101,10 +104,10 @@
 </h2>
 <p>You can derive a <em>connection</em> from raw bytes using <code><a href="https://rdrr.io/r/base/rawConnection.html" class="external-link">base::rawConnection</a></code> then you can access a zipped member connection using <code>base:unz</code>. This only works if you can access the member file names. The excerpt below requires that we know that the zip file has a member called <code>a.txt</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">xfun</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/xfun/man/read_bin.html" class="external-link">read_bin</a></span><span class="op">(</span><span class="st">"a.zip"</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/base/rawConnection.html" class="external-link">rawConnection</a></span><span class="op">(</span><span class="op">)</span> |&gt; <span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">unz</a></span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"a.txt"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">xfun</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/xfun/man/read_bin.html" class="external-link">read_bin</a></span><span class="op">(</span><span class="st">"a.zip"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/rawConnection.html" class="external-link">rawConnection</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">unz</a></span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"a.txt"</span><span class="op">)</span></span></code></pre></div>
 <p>Trouble is, there is no obvious way to determine the members, except from the original file. The following lists the zip file contents by name, length and date.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="st">"a.zip"</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="st">"a.zip"</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Naturally, this implies that you have to save raw bytes before you can list the zip.</p>
 </div>
 <div class="section level2">
@@ -113,17 +116,17 @@
 <p>If we accept the unzip from file limitation, then we only need to first write the raw bytes to a temporary file then apply the unzip-list to read back the resulting file information. This is not ideal but beats unzipping all the members from raw to disk. An actual unzip maps the member names to read file names which might not always prove reliable. File systems treat names case-sensitively or not, for example, typically for macOS and Windows. This would create a problem if two members share the same case-insensitive path name.</p>
 <p>Hence we define a simple function that lists members from a raw zip. It creates a temporary file, unlinking it before exit. At some future point, our implementation will replace the temporary file with some other, more in-memory clean, method of listing zipper file information.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">unzip_list</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">zipfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">zipfile</span>, useBytes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-  <span class="va">list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">zipfile</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">zipfile</span><span class="op">)</span>
-  <span class="va">list</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">unzip_list</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">zipfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">zipfile</span>, useBytes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="va">list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">zipfile</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">zipfile</span><span class="op">)</span></span>
+<span>  <span class="va">list</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>Should the <code>unzip_list</code> implementation apply <code>useBytes = TRUE</code>? The documentation explains that this option avoids re-coding.</p>
 <p>This only leaves us with another problem. The <code>base:unz</code> function creates a text connection from which you cannot read binary. The following fails.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">readBin</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">unz</a></span><span class="op">(</span><span class="st">"a.zip"</span>, <span class="st">"a.txt"</span><span class="op">)</span>, what <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">readBin</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">unz</a></span><span class="op">(</span><span class="st">"a.zip"</span>, <span class="st">"a.txt"</span><span class="op">)</span>, what <span class="op">=</span> <span class="st">"raw"</span><span class="op">)</span></span></code></pre></div>
 <p>Not only that, neither can you size the connection in order to determine how many raw bytes to read. This approach leads the research at present to a dead end.</p>
 </div>
 <div class="section level2">
@@ -131,20 +134,20 @@
 </h2>
 <p>Since we have to unzip to disk, why not write the raw bytes then unzip and read members one by one?</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">unzip_raw</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">zipfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">zipfile</span>, useBytes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-  <span class="va">list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">zipfile</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-  <span class="va">bins</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">list</span><span class="op">$</span><span class="va">Name</span>, <span class="kw">function</span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">{</span>
-    <span class="va">junk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">zipfile</span>, <span class="va">name</span>, junkpaths <span class="op">=</span> <span class="cn">TRUE</span>, exdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-    <span class="va">bin</span> <span class="op">&lt;-</span> <span class="fu">xfun</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/xfun/man/read_bin.html" class="external-link">read_bin</a></span><span class="op">(</span><span class="va">junk</span><span class="op">)</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">junk</span><span class="op">)</span>
-    <span class="va">bin</span>
-  <span class="op">}</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">zipfile</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">bins</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">list</span><span class="op">$</span><span class="va">Name</span>
-  <span class="va">bins</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">unzip_raw</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">zipfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/readBin.html" class="external-link">writeBin</a></span><span class="op">(</span><span class="va">object</span>, <span class="va">zipfile</span>, useBytes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="va">list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">zipfile</span>, list <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="va">bins</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">list</span><span class="op">$</span><span class="va">Name</span>, <span class="kw">function</span><span class="op">(</span><span class="va">name</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="va">junk</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/unzip.html" class="external-link">unzip</a></span><span class="op">(</span><span class="va">zipfile</span>, <span class="va">name</span>, junkpaths <span class="op">=</span> <span class="cn">TRUE</span>, exdir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="va">bin</span> <span class="op">&lt;-</span> <span class="fu">xfun</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/xfun/man/read_bin.html" class="external-link">read_bin</a></span><span class="op">(</span><span class="va">junk</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">junk</span><span class="op">)</span></span>
+<span>    <span class="va">bin</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">zipfile</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">bins</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">list</span><span class="op">$</span><span class="va">Name</span></span>
+<span>  <span class="va">bins</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="conclusions">Conclusions<a class="anchor" aria-label="anchor" href="#conclusions"></a>
@@ -174,7 +177,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

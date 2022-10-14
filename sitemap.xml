@@ -22,6 +22,9 @@
     <loc>/articles/index.html</loc>
   </url>
   <url>
+    <loc>/articles/pairwise-zipping.html</loc>
+  </url>
+  <url>
     <loc>/articles/tibble-type.html</loc>
   </url>
   <url>
@@ -70,6 +73,9 @@
     <loc>/reference/dot-docker_config.html</loc>
   </url>
   <url>
+    <loc>/reference/flatten_named.list.html</loc>
+  </url>
+  <url>
     <loc>/reference/get.gitlab.blobs.html</loc>
   </url>
   <url>
@@ -110,6 +116,9 @@
   </url>
   <url>
     <loc>/reference/types.of.html</loc>
+  </url>
+  <url>
+    <loc>/reference/unflatten_named.list.html</loc>
   </url>
   <url>
     <loc>/reference/unzip_bin.character.html</loc>

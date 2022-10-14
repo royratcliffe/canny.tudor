@@ -26,12 +26,15 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/pairwise-zipping.html">Pairwise Zipping</a>
+    </li>
+    <li>
       <a href="../articles/tibble-type.html">Tibble Type</a>
     </li>
     <li>
@@ -57,15 +60,19 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get.gitlab.blobs</span><span class="op">(</span><span class="va">x</span>, project <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get.gitlab.blobs</span><span class="op">(</span><span class="va">x</span>, project <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a></span><span class="op">(</span><span class="fl">1L</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>Project files with path column.</p></dd>
+
+
 <dt>project</dt>
 <dd><p>Identifies which project to apply file paths to.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Arguments passed on to <code><a href="https://statnmap.github.io/gitlabr/reference/gl_repository.html" class="external-link">gitlabr::gl_get_file</a></code></p><dl><dt><code>ref</code></dt>
 <dd><p>name of ref (commit branch or tag)</p></dd>
@@ -81,6 +88,7 @@
 
   
 </dl></dd>
+
 </dl></div>
 
   </div>
@@ -95,7 +103,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

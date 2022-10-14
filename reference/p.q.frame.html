@@ -27,12 +27,15 @@ row contains a unique p-q permutation."><!-- mathjax --><script src="https://cdn
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/pairwise-zipping.html">Pairwise Zipping</a>
+    </li>
+    <li>
       <a href="../articles/tibble-type.html">Tibble Type</a>
     </li>
     <li>
@@ -59,30 +62,33 @@ row contains a unique p-q permutation.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">p.q.frame</span><span class="op">(</span>v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">vector</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">p.q.frame</span><span class="op">(</span>v <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">vector</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>v</dt>
 <dd><p>Source vector.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Permutation frame.</p>
+    
+
+<p>Permutation frame.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">p.q.frame</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">p.q.frame</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   p q</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 a b</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 b a</span>
-<span class="r-in"><span class="co">#&gt;   p q</span></span>
-<span class="r-in"><span class="co">#&gt; 1 a b</span></span>
-<span class="r-in"><span class="co">#&gt; 2 b a</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">p.q.frame</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">#&gt;   p q</span></span></span>
+<span class="r-in"><span><span class="co">#&gt; 1 a b</span></span></span>
+<span class="r-in"><span><span class="co">#&gt; 2 b a</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">p.q.frame</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   p q</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 1 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 1 3</span>
@@ -90,13 +96,13 @@ row contains a unique p-q permutation.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4 2 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5 3 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6 3 2</span>
-<span class="r-in"><span class="co">#&gt;   p q</span></span>
-<span class="r-in"><span class="co">#&gt; 1 1 2</span></span>
-<span class="r-in"><span class="co">#&gt; 2 1 3</span></span>
-<span class="r-in"><span class="co">#&gt; 3 2 1</span></span>
-<span class="r-in"><span class="co">#&gt; 4 2 3</span></span>
-<span class="r-in"><span class="co">#&gt; 5 3 1</span></span>
-<span class="r-in"><span class="co">#&gt; 6 3 2</span></span>
+<span class="r-in"><span><span class="co">#&gt;   p q</span></span></span>
+<span class="r-in"><span><span class="co">#&gt; 1 1 2</span></span></span>
+<span class="r-in"><span><span class="co">#&gt; 2 1 3</span></span></span>
+<span class="r-in"><span><span class="co">#&gt; 3 2 1</span></span></span>
+<span class="r-in"><span><span class="co">#&gt; 4 2 3</span></span></span>
+<span class="r-in"><span><span class="co">#&gt; 5 3 1</span></span></span>
+<span class="r-in"><span><span class="co">#&gt; 6 3 2</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -111,7 +117,7 @@ row contains a unique p-q permutation.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

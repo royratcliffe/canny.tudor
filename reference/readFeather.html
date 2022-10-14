@@ -28,12 +28,15 @@ to temporary file before reading it back as a data frame."><!-- mathjax --><scri
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/pairwise-zipping.html">Pairwise Zipping</a>
+    </li>
+    <li>
       <a href="../articles/tibble-type.html">Tibble Type</a>
     </li>
     <li>
@@ -61,40 +64,45 @@ to temporary file before reading it back as a data frame.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">readFeather</span><span class="op">(</span><span class="va">object</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">readFeather</span><span class="op">(</span><span class="va">object</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>object</dt>
 <dd><p>Raw content to read as feather file</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Data frame as <code>tibble::<a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code></p>
+    
+
+<p>Data frame as <code>tibble::<a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></code></p>
+
+
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Suppose that you have a HTTP response with a binary response body encoding</span></span>
-<span class="r-in"><span class="co"># a feathered data frame.</span></span>
-<span class="r-in"><span class="fu">readFeather</span><span class="op">(</span><span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/content.html" class="external-link">content</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># More specifically, say you have a Plumber handler as follows. It handles</span></span>
-<span class="r-in"><span class="co"># a POST request with a feather body and responds with a feather body.</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co">#* Echo feathered data frame</span></span>
-<span class="r-in">  <span class="co">#* @parser feather</span></span>
-<span class="r-in">  <span class="co">#* @serializer feather</span></span>
-<span class="r-in">  <span class="co">#* @post /echo-df</span></span>
-<span class="r-in">  <span class="kw">function</span><span class="op">(</span><span class="va">req</span><span class="op">)</span> <span class="va">req</span><span class="op">$</span><span class="va">body</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Upload a feather and read-back the echo using this call. It answers a three</span></span>
-<span class="r-in"><span class="co"># by one tibble.</span></span>
-<span class="r-in"><span class="fu">readFeather</span><span class="op">(</span><span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/content.html" class="external-link">content</a></span><span class="op">(</span><span class="fu"><a href="upload_feather.html">upload_feather</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">  <span class="st">"http://localhost:7939/echo-df"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Suppose that you have a HTTP response with a binary response body encoding</span></span></span>
+<span class="r-in"><span><span class="co"># a feathered data frame.</span></span></span>
+<span class="r-in"><span><span class="fu">readFeather</span><span class="op">(</span><span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/content.html" class="external-link">content</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># More specifically, say you have a Plumber handler as follows. It handles</span></span></span>
+<span class="r-in"><span><span class="co"># a POST request with a feather body and responds with a feather body.</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co">#* Echo feathered data frame</span></span></span>
+<span class="r-in"><span>  <span class="co">#* @parser feather</span></span></span>
+<span class="r-in"><span>  <span class="co">#* @serializer feather</span></span></span>
+<span class="r-in"><span>  <span class="co">#* @post /echo-df</span></span></span>
+<span class="r-in"><span>  <span class="kw">function</span><span class="op">(</span><span class="va">req</span><span class="op">)</span> <span class="va">req</span><span class="op">$</span><span class="va">body</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Upload a feather and read-back the echo using this call. It answers a three</span></span></span>
+<span class="r-in"><span><span class="co"># by one tibble.</span></span></span>
+<span class="r-in"><span><span class="fu">readFeather</span><span class="op">(</span><span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/content.html" class="external-link">content</a></span><span class="op">(</span><span class="fu"><a href="upload_feather.html">upload_feather</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"http://localhost:7939/echo-df"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -109,7 +117,7 @@ to temporary file before reading it back as a data frame.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
