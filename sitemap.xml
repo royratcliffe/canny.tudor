@@ -82,6 +82,12 @@
     <loc>/reference/get.gitlab.project.id.html</loc>
   </url>
   <url>
+    <loc>/reference/hdx.html</loc>
+  </url>
+  <url>
+    <loc>/reference/hdx.sockconn.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
@@ -131,6 +137,12 @@
   </url>
   <url>
     <loc>/reference/upload_feather.html</loc>
+  </url>
+  <url>
+    <loc>/reference/vhdx.html</loc>
+  </url>
+  <url>
+    <loc>/reference/vhdx.sockconn.html</loc>
   </url>
   <url>
     <loc>/reference/vunzip_bin.html</loc>
