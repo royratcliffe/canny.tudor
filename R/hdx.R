@@ -1,5 +1,8 @@
 #' Half-duplex socket communication
 #' @description Writes then reads a socket connection.
+#'   Runs at half duplex. Writes lines, waits for a limited amount of
+#'   time for the socket to transition to reading-ready. Finally, inputs all
+#'   lines available for reading. Waits forever by default.
 #' @details The second half of the half-duplex communication, the scan half,
 #'   terminates on remote buffer flush, not necessarily on a line termination.
 #'   Typically the server side socket \emph{will} automatically flush when it
